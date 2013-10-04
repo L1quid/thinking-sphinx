@@ -11,7 +11,7 @@ class ThinkingSphinx::Search::Query
 
   def to_s
     (star_keyword(keywords || '') + ' ' + conditions.keys.collect { |key|
-       next if conditions[key].blank?
+       next if conditions[key].blank? || key.to_s == 'sphinx_internal_class_name'
 
       "@#{key} #{conditions[key]}"
       #"@#{key} #{star_keyword conditions[key], key}"
